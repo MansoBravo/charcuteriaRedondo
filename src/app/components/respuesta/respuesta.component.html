@@ -1,0 +1,17 @@
+
+<div class="seccion-cabecera relativo">
+  <div class="titular">
+    <h2 class="subtitulo" >Redondo Charcutería Carnicería</h2>
+    <h1 class="titulo" [innerHTML]="apartado + '-titulo' | translate"></h1>
+    <hr>
+  </div>
+</div>
+<div class="margin-bottom-10" [ngClass]="{'open': vistaApartado}">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <p class="text-center t-legal" [innerHTML]="apartado + '-texto' | translate"></p>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="contenido-carrito carrito"  [ngClass]="{'open': vistaApartado}" [class.enScroll]="_datosService.globalScroll || _datosService.seccion != 'productos'">
+    <div class="cabecera">
+      <h1 [innerHTML]=" 'tu-cesta-titulo' | translate"></h1>
+      <h5 class="titulo">
+          <span [innerHTML]=" 'tu-cesta' | translate"></span>  <span class="subtitle">{{numProductos}} </span>  <span [innerHTML]=" 'productos' | translate"></span>
+      </h5>
+    </div>
+    <div class="listado" *ngIf="carrito.length>0;else carritovaciotmpl">
+      <div class="item"  *ngFor="let item of carrito; let i = index">
+
+        <div class="foto">
+          <img src="{{item.urlFoto}}" />
+        </div>
+        <div class="datos container">
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="tit nombre">
+              <span [innerHTML]=" item.nombre"></span>
+              <span class="info-a-granel" *ngIf="item.a_granel" [innerHTML]="'producto-a-granel' | translate"></span>
+              </h3>
+              <div class="precio-anterior" *ngIf="item.precio_rebajado != item.precio">{{ item.precio | formatocomas}} </div>
+              <div class="precio">{{ item.precio_rebajado | formatocomas}} </div>
+            </div>
+            <div class="col-md-3">
+              <span class="btn-unidades"  (click)="restar(item);">-</span>
+              <div class="unidades">{{item.unidades}}</div>
+              <span class="btn-unidades"  (click)="sumar(item);">+</span>
+            </div>
+            <div class="col-md-3">
+                <div class="total-parcial">{{item.unidades * item.precio_rebajado | formatocomas }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="cerrar" (click)="eliminar(i);" ><i class="fas fa-times"></i></div>
+      </div>
+    </div>
+    <!--
+    <div class="text-right" *ngIf="carrito.length>0">
+      <div class="btn btn-primary btn-borrar ginebra" (click)="borrarCarrito();">VACIAR CESTA</div>
+    </div>
+  -->
+    <div class="pie" *ngIf="carrito.length>0">
+
+      <div class="total">
+          <div><span [innerHTML]="'precio-base' | translate"></span> {{total | formatocomas}}</div>
+          <div><span [innerHTML]="'gastos-envio' | translate"></span> {{totalGastos | formatocomas}}</div>
+          <div class="gastos">
+            <span *ngIf="total > carritoService.minCompraSinGastos" [innerHTML]="'gastos-gratis' | translate"></span>
+            <span *ngIf="total < carritoService.minCompraSinGastos" [innerHTML]="'completa-compra' | translate"></span>
+          </div>
+          <small [innerHTML]="'iva-incluido' | translate"></small>
+          <hr>
+         TOTAL: <span class="cantidad"> {{totalFinal | formatocomas }}</span>
+        <br>
+        
+      </div>
+      <!-- <small>{{totalPeso / 1000}} KG</small> -->
+      <div class="botones">
+        <div class="btn btn-comprar volver"  (click)="_datosService.volver();">  <span [innerHTML]=" 'volver' | translate"></span> </div>
+        <div class="btn btn-comprar" *ngIf="isValidoGranel();else carritonovalidotmpl" (click)=" _datosService.vistaMenu = false;" routerLink="/checkout">  <span [innerHTML]=" 'checkout-titulo' | translate"></span> </div>
+      </div>
+
+        <ng-template #carritonovalidotmpl>
+          <div class="margin-top-20 text-left aviso">
+            <strong [innerHTML]="'carrito-no-valido' | translate"></strong>
+          </div>
+        </ng-template>
+    </div>
+
+    <ng-template #carritovaciotmpl>
+      <div class="margin-top-20 text-left">
+        <strong [innerHTML]="'carrito-vacio' | translate"></strong>
+        <br>
+        <div class="btn btn-comprar"  (click)="_datosService.volver();">  <span [innerHTML]=" 'volver-productos' | translate"></span> </div>
+      </div>
+    </ng-template>
+  </div>

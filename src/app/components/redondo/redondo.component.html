@@ -1,0 +1,89 @@
+<div class="fotoCabecera">
+  <img src="assets/images/tiendas/cabecera_charcuredondo.png" alt="">
+</div>
+
+<div id="contenedor-redondo">
+  <div class=" container contenedor-imgtext">
+    <div class="imagen-lateral">
+      <img src="assets/images/tiendas/luis-alberto.png" alt="luis-alberto">
+    </div>
+    <div class="texto texto-1">
+      <img src="assets/images/tiendas/luis-alberto-bocadillo.png" alt="luis-alberto-bocadillo">
+      <p>
+        Mi hermano José María y yo somos los hijos del fundador, Alicio Redondo, y junto con mi mujer Nieves, regentamos
+        las tres tiendas de Valladolid. Yo me ocupo de la tienda de la calle Joaquín María Jalón 18, local de casi 200
+        metros donde atendemos a diario la demanda de nuestros productos para los clientes del barrio y de otras zonas
+        de Valladolid. Doménico, Nacho, Juan, Henar y Alberto (mi hijo), formamos un equipo sin competencia. Esta
+        carnicería está en la zona sur de la ciudad. Llevamos años en esta calle, pero anteriormente en un local algo
+        más pequeño, del que nos trasladamos para poder atender mucho mejor a nuestros clientes, que al final es lo
+        importante.
+      </p>
+    </div>
+  </div>
+  <div class="container contenedor-imgtext">
+    <div class="texto texto-2">
+      <img src="assets/images/tiendas/tienda-portillo-prado-bocadillo.png" alt="tienda-portillo-bocadillo">
+      <p>
+        Nuestro padre comenzó en el año 1967 en la Avenida de Palencia y después se trasladó a la calle Portillo del
+        Prado, 17, la tienda la más grande, con casi 300 m2. Está dirigida por José María, experto charcutero y
+        carnicero, Manuel y Begoña completan este estupendo equipo. De las tres carnicerías, esta es la que tiene más
+        espacio dedicado a la exposición y venta de vinos. Está situada en el barrio de la Rondilla, al norte de la
+        ciudad.
+      </p>
+    </div>
+    <div class="imagen-lateral">
+      <img src="assets/images/tiendas/tienda-portillo-prado.png" alt="tienda portillo">
+    </div>
+  </div>
+  <div class="container contenedor-imgtext">
+    <div class="imagen-lateral">
+      <img src="assets/images/tiendas/mateo-seoane.png" alt="mateo-seoane">
+    </div>
+    <div class="texto texto-1">
+      <img src="assets/images/tiendas/mateo-seoane-bocadillo.png" alt="mateo-seoane-bocadillo">
+      <p>
+        Esta es la carnicería más pequeña de las tres y “la que tiene el mejor equipo”, por lo menos eso es lo que dice
+        mi mujer, Nieves, que es la que regenta el negocio (¡¡es muy competitiva!!). A parte de la competencia por
+        querer ser mejor, tener la exposición más bonita, mejor surtida, limpia y coqueta, el equipo compuesto por
+        Esther, César, Jaime y Nieves hace un espléndido trabajo desde este local situado en la calle Mateo Seoane
+        Sobral, 3 del barrio de Parquesol, en la zona oeste de Valladolid. Un barrio vibrante con muchas familias
+        jóvenes.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="producto-ficha redondo" [ngClass]="{'open': vistaApartado}"
+  [class.enScroll]="_datosService.globalScroll || _datosService.seccion != 'productos'">
+  <div class="container">
+    <div class="titular text-center padding-top-5 padding-bottom-5">
+      <h1 class="titulo text-center tituloRedondo">Profesionales desde 1967</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p>Redondo Charcutería, una de las mejores carnicerías en Valladolid, está formada por profesionales de la
+          industria cárnica desde 1967. Elaboramos y servimos productos cárnicos y charcutería de elaboración propia.
+        </p>
+        <p>Nuestros principales productos son carne de ternera de Portillo, carne de cerdo, cordero, lechazo, pollo,
+          conejo, cochinillo, embutidos, quesos, bacalao, vinos, conservas y encurtidos.
+          Todos los productos son de <strong>máxima calidad</strong> y somos especialistas en charcutería y productos
+          naturales elaborados con métodos tradicionales, precocinados, embutidos, conservas, vinos y productos gourmet,
+          ya que somos una de las mejores carnicerías de Valladolid.</p>
+        <p>Nuestro padre, Alicio Redondo, era uno de los charcuteros más reconocidos en Valladolid. Su
+          <strong>experiencia y apuesta por la calidad</strong> de los productos que comercializaba, llevaron a la
+          empresa a la senda del éxito. Desde pequeños nos inculcó el conocimiento y el amor por su trabajo. En la
+          actualidad somos los hijos y familia, los que desarrollamos la actividad con el mismo cariño.
+        </p>
+
+        <p>Hoy en día comercializamos nuestros productos en tres carnicerías en Valladolid: Portillo del Prado 17,
+          Joaquín María Jalón 18 y Mateo Seoane Sobral 3. De esta manera cubrimos gran parte de la geografía de la
+          ciudad.</p>
+        <p>A través de nuestra página web, queremos dar un servicio de charcutería, carnicería y productos de calidad
+          online, puerta a puerta, en la provincia de Valladolid.</p>
+      </div>
+      <div class="col-md-12 text-center">
+        <div class="btn btn-comprar" routerLink="/tienda"> <span>ir a tienda</span> </div>
+      </div>
+    </div>
+  </div>
+</div>

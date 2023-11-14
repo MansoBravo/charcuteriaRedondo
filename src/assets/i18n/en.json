@@ -1,0 +1,134 @@
+{
+  "productos": "Products",
+  "recetas": "Recipes",
+  "como-comprar": "How to buy?",
+  "linea-horeca": "Horeca Division",
+  "contacto": "Contact",
+  "aviso-legal": "Legal warning",
+  "politica-de-privacidad": "Privacy Policy",
+  "politica-de-cookies": "Notice of cookies",
+
+  "banner-titulo": "Special offer",
+  "banner-texto": "Shipping costs <strong>free</strong> from 90 €",
+
+  "home-productos-subtitulo": "Selección",
+  "home-productos-titulo": "Productos",
+  "home-recetas-subtitulo": "Descubre",
+  "home-recetas-titulo": "Recetas",
+  "home-claim": "From earth with soul",
+  "servicio-al-hostelero": "Service to the innkeeper",
+  "linea-horeca": "HORECA division",
+  "mas-info": "For more information: <a href='mailto:info@agroinnovacalidad.com'>info@agroinnovacalidad.com</a>",
+  "sorprende": "Surprise your guests with this delicious mix of products and flavors",
+
+  "no-resultados": "There are no results for your search",
+  "no-resultados-info": "We are sorry, your selection has not obtained results",
+
+  "productos-destacados": "FEATURED PRODUCTS",
+  "productos-agroinnova": "AGROINNOVA CALIDAD PRODUCTS",
+  "nuestra-seleccion": "Our selection",
+
+  "productos-relacionados": "Related products",
+  "te-puede-interesar": "IT MAY INTEREST YOU...",
+
+  "recetas-agroinnova": "Agroinnova Calidad Recipes",
+
+  "icono-estrella": "GOURMET<br/>SELECTION",
+  "icono-horeca": "SPECIAL<br/>HOSTELERY",
+  "icono-regalo": "GIFT<br/>IDEA",
+
+  "receta-del-dia": "RECIPE OF THE DAY",
+  "nuestras-recetas": "Our recipes",
+  "ingredientes": "Ingredients",
+  "elaboracion": "Elaboration",
+
+  "en-reposicion": "IN REPOSITION",
+  "fuera-de-temporada": "OUT OF SEASON",
+  "oferta": "offer",
+  "novedad": "new",
+  "tierra": "tierra de sabor",
+  "frescura": "Guarantee of freshness",
+  "entrega": "Guaranteed delivery time",
+
+  "selecciona-una-categoria": "Select a category",
+  "todas": "All",
+  "categorias": "Choose category",
+  "filtros": "Filter",
+
+  "productos-a-granel": "Bulk products",
+  "granel-titulo": "Make your own combination of bulk products!",
+  "granel-info": "Choose up to 4 different potato varieties in bulk format (1,250 kg) and fill a 5kg box.<br />Try them all and refill the box with your favorites!",
+
+  "producto-anadido": "Product successfully added to your cart",
+  "seguir-comprando": "Ok",
+  "tramitar-compra": "View cart",
+
+  "comprar": "Buy",
+  "tu-cesta": "Your basket has: ",
+  "tu-cesta-titulo": "Your basket ",
+  "iva-incluido": "VAT included",
+  "gastos-gratis": "Free delivery",
+  "precio-base": "Base price",
+  "gastos-envio": "Shipping costs:",
+  "checkout-titulo": "Process purchase",
+  "producto-a-granel": "Bulk product 1,250 kg / unit <sup>*</sup>",
+  "carrito-no-valido": "<h5>NOTICE</h5>Your cart contains products in bulk format that do not add multiples of 5Kg. Please check your purchase. Remember that each unit of bulk product is 1,250 Kg.",
+  "carrito-vacio": "The cart is empty",
+  "volver-productos": "Back to products",
+  "volver": "Back",
+
+  "login-titulo": "Login / User registration",
+  "cliente-registrado": "Registered customer",
+  "cliente-registrado-info": "If you are already a Agroinnova Calidad customer, please enter your email and password",
+  "cliente-nuevo": "New client",
+  "cliente-nuevo-info": "If it is the first time you buy at Agroinnova Calidad, we need you to register.",
+  "he-leido": "I have read and accept the ",
+  "olvide": "Did you forget your password?",
+  "introduce-email-recordar": "Enter the email with which you registered to retrieve your access data.",
+  "entrar": "Enter",
+  "registrarme": "Register",
+  "recordar": "Remember",
+  "restablecer-titulo": "Reset password for: ",
+  "reestablacer": "reset",
+  "repetir-password": "repeat password",
+  "recuperar-titulo": "Recover password",
+
+  "nombre-apellidos": "Name and Surname",
+  "telefono": "Telephone",
+  "nombre-facturacion": "Billing name",
+  "razon-social": "Business name",
+  "dni": "DNI / NIF / CIF",
+  "direccion": "Address",
+  "pais": "Country",
+  "provincia": "Province",
+  "poblacion": "Town",
+  "codigo-postal": "Postal code",
+
+  "utilizarMismosDatos": "Use billing information for shipping",
+
+  "datos-usuario": "User data",
+  "datos-facturacion": "Billing information",
+  "datos-envio": "Shipping information",
+  "datos-pago": "Payment method",
+
+  "resumen-titulo": "Summary of your purchase",
+  "revisa": "Please, check that all the data are filled in",
+  "finalizar-compra": "Complete purchase",
+
+  "formato": "Format: ",
+  "compraok-texto": "Thank you very much for buying at AGROINNOVA QUALITY. <br /> You will receive an email with the summary of your order and the instructions to make the payment.",
+
+  "que-cocinamos": "WHAT ARE WE GOING TO COOK?",
+  "que-necesitas": "WHAT DO YOU NEED?",
+  "productos-para-receta": "Products with which to prepare this recipe",
+  "recetas-para-sorprender": "Recipes to surprise with",
+
+  "siguenos": "Follow us!",
+  "contacta-con-nosotros": "Contact us",
+
+  "comprako-titulo": "Your purchase could not finish",
+  "comprako-texto": "Our system has not received any response about the bank transaction. <br /> There will be no charge to your account. <br /> Contact us if you would like more information, please.",
+
+  "compraok-titulo": "Your purchase has been made successfully",
+  "compraok-texto": "Thank you very much for purchasing at AGROINNOVA QUALITY. <br /> You will receive an email with the summary of your order and the instructions to make the payment in the case of transfer."
+  }

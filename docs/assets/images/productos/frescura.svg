@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="43px" viewBox="0 0 31 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="05-PRODUCTO-FICHA" transform="translate(-574.000000, -1120.000000)" fill="#DDB246" fill-rule="nonzero">
+            <g id="ficha-producto" transform="translate(370.000000, 265.000000)">
+                <g id="leaf" transform="translate(181.000000, 855.000000)">
+                    <path d="M49.312788,0 C49.312788,0 45.7582079,3.43241366 41.913877,4.81625017 C13.4455036,15.0649068 25.4518291,35.0366818 25.8435177,35.1025008 C25.8435177,35.1025008 27.4398898,32.3356076 29.5963318,30.7574335 C43.2802819,20.7450702 46.0615139,9.2203518 46.0615139,9.2203518 C46.0615139,9.2203518 42.9908444,23.0882731 30.816921,31.7172678 C28.128146,33.6221193 26.3075265,38.3122684 25.5368425,43 C25.5368425,43 27.4427888,42.2335675 28.2623653,42.0259725 C28.5819688,39.9501787 29.2501666,37.9625075 30.3798658,36.1868765 C47.3943835,38.20309 52.9669552,24.5575807 53.6949366,19.7995071 C55.4131481,8.56192792 49.312788,0 49.312788,0 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

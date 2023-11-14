@@ -1,0 +1,259 @@
+<!-- <app-banner *ngIf="!categoriaSeleccionada.descripcion"></app-banner>-->
+<div class="cabecera-home" *ngIf="categoriaSeleccionada.url == null">
+  <a [href]="textoImagenHome"><img
+      src="https://charcuredondo.com.es/files/preferences/{{imagenHome.owner_type}}/{{imagenHome.type}}/{{imagenHome.id}}{{imagenHome.extension}}"></a>
+</div>
+<div class="productos-cabecera productos-cabecera-arriba" [ngClass]="{'open': vistaApartado}"
+  *ngIf="categoriaSeleccionada.descripcion">
+  <h2 class="producto_cabecera" [innerHTML]="categoriaSeleccionada[_datosService.getCampo('nombre')]"></h2>
+</div>
+<div class="productos-listado content" [ngClass]="{'open': vistaApartado}" #banda>
+  <!--[class.fixed]="isScrolled"-->
+  <div class="cabecera" [class.consubmenu]="subCategorias.length" [ngClass]="['buscador', buscadorOpen ? 'open' : '']">
+    <div class="head" (click)="changeBuscador()" [innerHTML]="'categorias'| translate"></div>
+    <div class="busqueda">
+      <div class="nav-categorias">
+        <div [ngClass]="['titulo', categoriaSeleccionada.url == null ? 'selected' : '']" routerLink="/tienda">
+          <span>Nuestros Destacados</span>
+        </div>
+        <!--
+        <div [ngClass]="['titulo', categoriaSeleccionada.url == null ? 'selected' : '']" routerLink="/tienda">
+          <span [innerHTML]="'todas' | translate"></span>
+        </div>
+-->
+        <div [ngClass]="['titulo', categoriaSeleccionada.url == item.url ? 'selected' : '']"
+          routerLink="/tienda/{{item.url}}" *ngFor="let item of categorias">
+          <span [innerHTML]="item[_datosService.getCampo('nombre')]"></span>
+        </div>
+      </div>
+      <!--<h5 class="titulo" [innerHTML]="'filtros'| translate"></h5>
+      <form class="filtros" [formGroup]="form" >
+        <label class="opcion" formArrayName="filtros" *ngFor="let order of form?.controls; let i = index">
+          <input type="checkbox" [formControlName]="i">
+          <span [innerHTML]="filtros[i].name| translate"></span>
+        </label>
+      </form>
+-->
+    </div>
+  </div>
+
+  <div class="resultados"> <!--[class.fixed]="isScrolled"-->
+    <div class="head">
+      <div class="migas_productos">
+        <span [innerHTML]="'productos'| translate"></span>
+        <span *ngIf="categoriaSeleccionada.nombre"
+          [innerHTML]="categoriaSeleccionada[_datosService.getCampo('nombre')]"></span>
+        <span *ngIf="categoriaSeleccionada2.nombre"
+          [innerHTML]="categoriaSeleccionada2[_datosService.getCampo('nombre')]"></span>
+      </div>
+    </div>
+    <div class="container listado" [ngClass]="{'open': vistaApartado}">
+      <div class="row" *ngIf="productosFiltrados.length > 0;else noresultados">
+        <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let item of productosFiltrados">
+          <div [ngClass]="['item', item.en_reposicion  || item.fuera_de_temporada ?  'inactiva' : '']">
+            <ng-container *ngIf="item.imagenes.length > 1; then cover; else noCover">
+            </ng-container>
+            <ng-template #noCover>
+              <div class="foto" routerLink="/producto/{{item.url}}">
+                <img src="{{item.imagenes[0].path}}"
+                  alt="{{item[_datosService.getCampo('nombre')]}} Charcuteria Redondo"
+                  title="{{item[_datosService.getCampo('nombre')]}} Charcuteria Redondo" />
+              </div>
+            </ng-template>
+            <ng-template #cover>
+              <div class="foto" routerLink="/producto/{{item.url}}">
+                <img src="{{item.imagenes[0].path}}" [class.cover]="item.imagenes[0].type=='img2'"
+                  [class.no-cover]="item.imagenes[0].type=='img'"
+                  alt="{{item[_datosService.getCampo('nombre')]}} Charcuteria Redondo"
+                  title="{{item[_datosService.getCampo('nombre')]}} Charcuteria Redondo" />
+                <img src="{{item.imagenes[1].path}}" [class.cover]="item.imagenes[1].type=='img2'"
+                  [class.no-cover]="item.imagenes[1].type=='img'"
+                  alt="{{item[_datosService.getCampo('nombre')]}} Charcuteria Redondo"
+                  title="{{item[_datosService.getCampo('nombre')]}} Charcuteria Redondo" />
+              </div>
+            </ng-template>
+            <div class="info" routerLink="/producto/{{item.url}}">
+              <h3 class="titulo" [innerHTML]="item[_datosService.getCampo('nombre')]"></h3>
+              <p [innerHTML]="item[_datosService.getCampo('formato')]"></p>
+            </div>
+            <div class="precio" *ngIf="!item.en_reposicion && !item.fuera_de_temporada ">
+              <div class="pvp">
+                <span class="anterior" *ngIf="isOferta(item)">{{item?.precio | formatocomas}}</span>
+                <span>{{item?.precio_rebajado | formatocomas}}</span>
+              </div>
+              <p *ngIf="item.caracteristicas"><span [innerHTML]="item.caracteristicas"></span>€/kg</p>
+            </div>
+            <div class="dato" routerLink="/producto/{{item.url}}">
+              <div class="en-reposicion" *ngIf="item.en_reposicion">
+                <span [innerHTML]="'en-reposicion'| translate"></span>
+              </div>
+              <div class="fuera-de-temporada" *ngIf="item.fuera_de_temporada">
+                <span [innerHTML]="'fuera-de-temporada'| translate"></span>
+              </div>
+            </div>
+            <div class="tierra" *ngIf="item.tierra_de_sabor">
+              <img src="assets/images/comunes/corazon.svg" alt="">
+            </div>
+
+            <div class="bt-comprar" (click)="addProducto(item); _datosService.cambiaVistaCarrito();">
+              <img src="assets/images/comunes/bt-compra.svg" alt="comprar">
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noresultados class="row listado">
+        <div class="col-md-12">
+          <div class="info-a-granel">
+            <h1 class="titulo" [innerHTML]="'no-resultados' | translate"></h1>
+            <strong [innerHTML]="'no-resultados-info' | translate"></strong>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<div class="opinion-destacada" *ngIf="!categoriaSeleccionada.descripcion">
+  <div class="linea-separador"></div>
+  <div class="boton-opiniones">
+    <div>LAS SABROSAS OPINIONES DE NUESTROS CLIENTES</div>
+  </div>
+  <div class="texto-opinion">
+    <img src="assets/images/home/comillas1.svg" alt="Comillas de apertura">
+    <p [innerHTML]="opinionDestacada"></p>
+    <img src="assets/images/home/comillas2.svg" alt="Comillas de cierre">
+  </div>
+</div>
+<div class="opiniones-home" *ngIf="opinionesHome.length > 0 && !categoriaSeleccionada.descripcion">
+  <div class="boton-opiniones">
+    <a href="https://g.page/r/CVvtlBUa3QruEAE/review" target="blank_">TU OPINIÓN NOS INTERESA, DÉJANOS TU COMENTARIO</a>
+  </div>
+  <div class="contenedor-opiniones">
+    <div class="opinion" *ngFor="let opinion of opinionesHome">
+      <h3>{{opinion.cliente}}</h3>
+      <div class="estrellas">
+        <img src="assets/images/comunes/estrella.png">
+        <img *ngIf="opinion.estrellas > 1" src="assets/images/comunes/estrella.png">
+        <img *ngIf="opinion.estrellas > 2" src="assets/images/comunes/estrella.png">
+        <img *ngIf="opinion.estrellas > 3" src="assets/images/comunes/estrella.png">
+        <img *ngIf="opinion.estrellas > 4" src="assets/images/comunes/estrella.png">
+      </div>
+      <div class="comentario">
+        <p>{{opinion.comentario}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="boton-opiniones">
+    <a routerLink="/nuestros-clientes-opinan">VER MÁS OPINIONES DE CLIENTES</a>
+  </div>
+</div>
+<div class="productos-cabecera" [ngClass]="{'open': vistaApartado}" *ngIf="!categoriaSeleccionada.descripcion">
+  <div class="info">
+    <h3 class="titulo">Redondo Charcutería Carnicería</h3>
+    <h5 class="subtitulo">a domicilio en Valladolid</h5>
+    <p [innerHTML]="textoHome"></p>
+  </div>
+</div>
+<div class="separador-linea"></div>
+<div class="contenedor-iconos">
+  <div class="iconos-home">
+    <div class="icono-home">
+      <div class="card-icono">
+        <img src="assets/images/home/icono-envio-gratis.png" alt="icono-envio-gratis">
+        <div class="contenido-icono">
+          <h2>
+            Envíos gratis
+          </h2>
+          <p>
+            A toda España (excepto islas)
+            en 24/48h
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="icono-home">
+      <div class="card-icono">
+        <img src="assets/images/home/icono-envios-valladolid.png" alt="icono-envios-valladolid">
+        <div class="contenido-icono">
+          <h2>
+            Envíos Valladolid Provincia
+          </h2>
+          <p>
+            Envío en menos de 24h
+            o recogida en tienda
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="icono-home">
+      <div class="card-icono">
+        <img src="assets/images/home/icono-pago-seguro.png" alt="icono-pago-seguro">
+        <div class="contenido-icono">
+          <h2>
+            Pago seguro
+          </h2>
+          <p>
+            Tienda protegida con
+            protocolo SSL
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="icono-home">
+      <div class="card-icono">
+        <img src="assets/images/home/icono-garantia-devolucion.png" alt="icono-garantia-devolucion">
+        <div class="contenido-icono">
+          <h2>
+            Garantía de devolución
+          </h2>
+          <p>
+            Si no quedas satisfecho puedes
+            devolver el producto sin coste
+            durante 14 días
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="icono-home">
+      <div class="card-icono">
+        <img src="assets/images/home/icono-atencion-personalizada.png" alt="icono-atencion-personalizada">
+        <div class="contenido-icono">
+          <h2>
+            Atención personalizada
+          </h2>
+          <p>
+            983 47 15 79
+            pedidos@charcuredondo.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="productos-cabecera productos-cabecera-arriba" [ngClass]="{'open': vistaApartado}"
+  *ngIf="categoriaSeleccionada.descripcion">
+  <div class="info">
+    <h3 class="titulo">Tienda</h3>
+    <h5 class="subtitulo">Productos Redondo</h5>
+    <p [innerHTML]="categoriaSeleccionada.descripcion"></p>
+  </div>
+</div>
+<!--
+<div class="productos-cabecera">
+  <div class="info">
+    <h5 class="subtitulo">Redondo Charcutería Carnicería venta online en Valladolid</h5>
+    <p>
+      Somos especialistas en charcutería y productos naturales elaborados con métodos tradicionales: salchichas, hamburguesa de ternera, hamburguesa de cerdo ibérico, hamburguesa de pollo, chorizo fresco, jijas, pincho argentino de ternera, pincho rojo de cerdo, pincho andaluz de pollo, pincho de lechazo, pincho barbacoa, ternera rellena, solomillo de cerdo relleno de beicon queso y pasas.
+      <br /><br />
+      Precocinados: croquetas, San Jacobo, flamenquitos, cachopo de ternera, cachopo de pollo, cachopo de cerdo, callos, oreja de cerdo, lasaña, de cerdo, lasaña de ternera, lasaña de espinacas, rollitos de primavera, rollitos de york y queso.
+      <br /><br />
+      Embutidos: jamón gran reserva, paleta gran reserva, jamón ibérico, paleta ibérica, , chorizo, salchichón, lomo curado, lomo ibérico, longaniza ibérica, longaniza ibérica, chorizo, cecina, quesos curados y frescos.
+      <br /><br />
+      Conservas: espárragos, anchoas, pimientos, guisantes, lomos de sardinas, lomo y chorizo de la olla.
+      <br /><br />
+      Productos de Cascajares: cochinillo, capón, pularda.
+      <br /><br />
+      Vinos tintos, blancos y rosados: Vega Sicilia Único, Vega Sicilia 5º Valbuena, Vega Sicilia Alión, Pesquera Crianza, 47PSQR, Pruno, Protos, Pago de Carraovejas, Mauro, Condado de Haza, Carramimbre, La Planta, La Veguilla, Verdejo Martivillí, Verdejo José Pariente, Salvueros.
+    </p>
+  </div>
+</div>
+-->

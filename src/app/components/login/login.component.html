@@ -1,0 +1,70 @@
+<div class="contenido-carrito padding-top-10" [ngClass]="{'open': vistaApartado}">
+  <div class="cabecera">
+    <h1 [innerHTML]="'login-titulo' | translate"></h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-12">
+      <!-- FORMULARIO LOGIN -->
+      <div class="grupo-registro">
+        <div class="titulo" [innerHTML]="'cliente-registrado' | translate"> </div>
+        <form class="login" (ngSubmit)="login()" >
+          <p class="info" [innerHTML]="'cliente-registrado-info' | translate" ></p>
+          <div [formGroup]="loginForm" >
+          <mat-form-field >
+            <input matInput type="email" placeholder="email" formControlName="username" required>
+            <!-- <mat-error *ngIf="username">Mail erroneo</mat-error>-->
+          </mat-form-field>
+          <mat-form-field >
+            <input matInput type="password" placeholder="password" formControlName="password" required>
+          </mat-form-field>
+          <div class="sms" *ngIf="sms2" [innerHTML]="sms2"> </div>
+          <button md-raised-button type="submit"  *ngIf="!isRecordar" class="btn btn-comprar" [innerHTML]=" 'entrar' | translate"></button>
+        </div>
+        </form>
+      </div>
+
+      <!-- FORMULARIO SOLICITAR RECUPERAR PASSWORD-->
+      <div class="grupo-registro">
+        <div class="titulo" [innerHTML]="'olvide' | translate"> </div>
+        <form class="login" (ngSubmit)="recuperarPassword()">
+          <p class="info" [innerHTML]="'introduce-email-recordar' | translate" ></p>
+          <div class="sms" *ngIf="sms" [innerHTML]="sms"> </div>
+          <div [formGroup]="recuperarForm" >
+          <mat-form-field >
+            <input matInput type="email" placeholder="email" formControlName="username" required>
+          </mat-form-field>
+          <button md-raised-button type="submit" class="btn btn-comprar" [innerHTML]=" 'recordar' | translate"></button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+      <div class="col-lg-6 col-md-12">
+      <!-- FORMULARIO DE REGISTRO -->
+      <div class="grupo-registro">
+        <div class="titulo" [innerHTML]="'cliente-nuevo' | translate"> </div>
+        <p class="info" [innerHTML]="'cliente-nuevo-info' | translate"></p>
+
+        <form class="login" (ngSubmit)="registro()" novalidate>
+          <div [formGroup]="registroForm">
+            <mat-form-field>
+              <input matInput type="email" placeholder="email" formControlName="username" required>
+            </mat-form-field>
+            <mat-form-field >
+            <input matInput type="password" placeholder="password" formControlName="password" required>
+            </mat-form-field>
+            <mat-form-field >
+            <input matInput type="password" [placeholder]="'repetir-password'| translate" formControlName="password2" required>
+            </mat-form-field>
+            <mat-checkbox class = "example-margin" formControlName="aviso">
+               <label><small [innerHTML]=" 'he-leido'| translate"></small></label> <a routerLink='/politica-de-privacidad'> <small [innerHTML]=" 'politica-de-privacidad'| translate"></small></a>
+             </mat-checkbox>
+             <br>
+             <div class="sms" *ngIf="sms3" [innerHTML]="sms3"> </div>
+            <button md-raised-button type="submit" class="btn btn-comprar" [innerHTML]=" 'registrarme'| translate"></button>
+          </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>

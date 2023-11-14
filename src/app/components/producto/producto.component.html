@@ -1,0 +1,96 @@
+<div class="producto-ficha" [ngClass]="{'open': vistaApartado}" [class.enScroll]="_datosService.globalScroll || _datosService.seccion != 'productos'">
+  <div class="container">
+    <div class="row">
+      <!-- FOTO -->
+      <div class="col-md-6 foto">
+        <img [src]="productoFoto" alt="{{producto[_datosService.getCampo('nombre')]}} Charcuteria Redondo" title="{{producto[_datosService.getCampo('nombre')]}} Charcuteria Redondo">
+      </div>
+      <!-- FICHA -->
+      <div class="col-md-6">
+        <div class="categoria">
+          (<span routerLink="/tienda/{{_datosService.createSlug(getNombreCategoriaProducto(productoIdCategoria))}}" [innerHTML]="getNombreCategoriaProducto(productoIdCategoria)"></span>)
+        </div>
+        <h1 class="titulo" [innerHTML]="producto[_datosService.getCampo('nombre')]"></h1>
+        <p class="formato" [innerHTML]= "producto[_datosService.getCampo('formato')]"></p>
+        <h2 class="descripcion" [innerHTML]="producto[_datosService.getCampo('descripcion')]"></h2>
+        <div class="precio"  *ngIf="isActivo(producto);else noActivo">
+          <div class="pvp">
+              <span class="anterior" *ngIf="isOferta(producto)">{{producto?.precio | formatocomas}}</span>
+              <span>{{producto?.precio_rebajado | formatocomas}}</span>
+          </div>
+          <p *ngIf="producto.caracteristicas"><span [innerHTML]="producto.caracteristicas"></span>€/kg</p>
+          <div class="form-unidades">
+            <span class="btn-unidades"  (click)="restar();">-</span>
+            <div class="unidades">{{unidades}}</div>
+            <span class="btn-unidades"  (click)="sumar();">+</span>
+          </div>
+          <div class="btn btn-comprar" (click)="addProducto(producto); _datosService.cambiaVistaCarrito();" [innerHTML]="'comprar' | translate"></div>
+        </div>
+        <ng-template #noActivo>
+          <div class="fuera-de-temporada" *ngIf="producto.fuera_de_temporada">
+                <span [innerHTML]="'fuera-de-temporada'| translate"></span>
+          </div>
+          <div class="btn btn-comprar"  (click)="_datosService.volver();">  <span [innerHTML]=" 'volver' | translate"></span> </div>
+        </ng-template>
+
+      </div>
+<!-- no fotos
+      <div class="col-md-12">
+        <div class="fotos row">
+          <div class="foto col-md-4" *ngFor="let foto of producto.galeria">
+            <img src="{{foto.imagenes[0].path}}" />
+          </div>
+        </div>
+      </div>
+-->
+
+
+    </div>
+  </div>
+  <br><br>
+  <hr>
+</div>
+
+
+<!-- RELACIONADOS -->
+<section class="producto-recetas margin-top-10 margin-bottom-10" *ngIf="productosRelacionados">
+  <div class="titular">
+    <h2 class="subtitulo" [innerHTML]="'te-puede-interesar'| translate"></h2>
+    <h1 class="titulo" [innerHTML]="'productos-relacionados'| translate"></h1>
+  </div>
+  <div class="container productos-listado"  [ngClass]="{'open': vistaApartado}">
+    <div class="row listado">
+      <div class="col-lg-4 col-md-6" *ngFor="let item of productosRelacionados">
+        <div  [ngClass]="['item', item.en_reposicion  || item.fuera_de_temporada ?  'inactiva' : '']">
+          <div class="foto" routerLink="/producto/{{item.url}}">
+            <img src="{{item.imagenes[0].path}}" alt="{{item[_datosService.getCampo('nombre')]}} Charcuteria Redondo"/>
+          </div>
+          <div class="info" routerLink="/producto/{{item.url}}">
+            <h3 class="titulo" [innerHTML]="item[_datosService.getCampo('nombre')]"></h3>
+            <p [innerHTML]="item[_datosService.getCampo('formato')]"></p>
+          </div>
+          <div class="precio" *ngIf="!item.en_reposicion && !item.fuera_de_temporada ">
+            <div class="pvp">
+              <span class="anterior" *ngIf="isOferta(item)">{{item?.precio | formatocomas}}</span>
+              <span>{{item?.precio_rebajado | formatocomas}}</span>
+            </div>
+            <p *ngIf="item.caracteristicas"><span [innerHTML]="item.caracteristicas"></span>€/kg</p>
+          </div>
+          <div class="dato" routerLink="/producto/{{item.url}}">
+            <div class="en-reposicion" *ngIf="item.en_reposicion">
+              <span [innerHTML]="'en-reposicion'| translate"></span>
+            </div>
+            <div class="fuera-de-temporada" *ngIf="item.fuera_de_temporada">
+              <span [innerHTML]="'fuera-de-temporada'| translate"></span>
+            </div>
+          </div>
+          <div class="bt-comprar" (click)="addProducto(item); _datosService.cambiaVistaCarrito();">
+            <img src="assets/images/comunes/bt-compra.svg" alt="comprar">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn btn-comprar"  (click)="_datosService.volver();">  <span [innerHTML]=" 'volver' | translate"></span> </div>
+  </div>
+</section>
+<app-banner></app-banner>

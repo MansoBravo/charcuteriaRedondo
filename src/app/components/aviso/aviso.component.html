@@ -1,0 +1,19 @@
+<div class="seccion-cabecera relativo">
+  <div class="titular">
+    <h2 class="subtitulo" >Redondo Charcutería Carnicería</h2>
+    <h1 class="titulo" [innerHTML]="rutaApartado | translate"></h1>
+    <hr>
+  </div>
+</div>
+<div class="margin-bottom-10" [ngClass]="{'open': vistaApartado}">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+          <p class="text-left t-legal" [innerHTML]="texto" *ngIf="_datosService.getIdioma()== 'es'"></p>
+          <p class="text-left t-legal" [innerHTML]="texto_en"  *ngIf="_datosService.getIdioma()== 'en'"></p>
+        </div>
+
+    </div>
+  </div>
+</div>

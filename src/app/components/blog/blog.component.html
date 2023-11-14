@@ -1,0 +1,74 @@
+<div class="ficha-blog" [ngClass]="{'open': vistaApartado}">
+  <div *ngIf="isNoticia">
+    <section class="noticia">
+      <div class="info">
+        <div class="dato text-left"> <span [innerHtml]="noticia?.miCategoria"></span> | <span class="fecha">{{
+            devuelveFecha(noticia?.publishing_date) | date: 'dd/MM/yyyy' }}</span></div>
+        <h1 class="titulo" [innerHtml]="noticia['title']"></h1>
+        <img class="principal" [src]="noticia?.imagenes[0].path" [alt]="noticia?.imagenes[0].name"
+          [title]="noticia?.imagenes[0].name">
+        <div class="text-justify" [innerHtml]="noticia.intro"></div>
+        <hr>
+        <div class="text-justify" [innerHtml]="noticia.content"></div>
+        <div class="btn btn-comprar" routerLink="/blog"> <span [innerHTML]=" 'volver' | translate"></span> </div>
+        <div class="compartir-redes">
+          <a [href]="'http://www.facebook.com/sharer.php?u=https://charcuredondo.com.es' + activatedRoute.snapshot['_routerState'].url"
+            target="blank_"><img src="assets/images/comunes/facebook.png"></a>
+          <a [href]="'http://twitter.com/intent/tweet?url=https://charcuredondo.com.es' + activatedRoute.snapshot['_routerState'].url"
+            target="blank_"><img src="assets/images/comunes/twitter.png"></a>
+          <a [href]="'mailto:?subject=' + noticia['title'] + '&body=https://charcuredondo.com' + activatedRoute.snapshot['_routerState'].url"
+            target="blank_"><img src="assets/images/comunes/email.png"></a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div *ngIf="!isNoticia">
+    <div class="noticias-submenu">
+      <div class="cabecera" (click)="_datosService.cambiaVistaSubmenu();">
+        <span *ngIf="!_datosService.categoriaBlog">Categorias</span>
+        <span *ngIf="_datosService.categoriaBlog" [innerHtml]="getNombreCategoria()"></span>
+      </div>
+      <div [ngClass]="['listado', _datosService.vistaSubmenu ? 'open' : '']">
+        <div class="bt" (click)="_datosService.vistaSubmenu = false; filtra(''); "
+          [ngClass]="{'selected': _datosService.categoriaBlog == ''}" [innerHtml]="'todas' | translate"></div>
+        <div class="bt" [ngClass]="{'selected': _datosService.categoriaBlog == item.id}" *ngFor="let item of categorias"
+          (click)="_datosService.vistaSubmenu = false; filtra(item?.id)" [innerHtml]="item.nombre">></div>
+      </div>
+    </div>
+
+    <div class="noticias row">
+      <div class="cabecera">
+        Noticias
+      </div>
+      <div class="ordenar">
+        Ordenar:
+        <select class='select-option' #ordenar (change)='ordenarBlog(ordenar.value)'>
+          <option class='option' *ngFor='let option of ordenarValues' [value]="option.id">{{option.val}}</option>
+        </select>
+      </div>
+      <div class="listado row">
+        <div class="col-md-4" *ngFor="let item of noticiasFiltradas">
+          <div class="item" routerLink="/blog/{{item.url}}">
+            <div class="foto" [ngStyle]="{'background-image': 'url('+ item?.imagenes[0].path + ')'}"></div>
+
+            <div class="info">
+              <h3 class="titulo" [innerHtml]="item.title"></h3>
+              <div class="dato">
+                <span [innerHtml]="getCategoria(item.category_id)"></span> | <span class="fecha">{{
+                  devuelveFecha(item.publishing_date) | date: 'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="intro" [innerHtml]="item.intro"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--
+<div>
+  <p *ngFor="let item of noticiasFiltradas">https://charcuredondo.com/blog/{{item.url}}</p>
+</div>
+-->

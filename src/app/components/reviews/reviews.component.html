@@ -1,0 +1,37 @@
+<div class="header-reviews">
+    <img src="assets/images/comunes/header-opiniones.svg">
+</div>
+<div class="enlaces-reviews">
+    <h1>¿Eres ya cliente? Déjanos tu comentario...</h1>
+    <div class="boton-reviews">
+        <a href="https://g.page/r/CVvtlBUa3QruEAg/review" target="blank_">PORTILLO DEL PRADO 17</a>
+    </div>
+    <div class="boton-reviews">
+        <a href="https://g.page/r/CbSlFeN6hEzUEAg/review" target="blank_">JOAQUÍN MARÍA JALÓN 18</a>
+    </div>
+    <div class="boton-reviews">
+        <a href="https://g.page/r/CYnaeoJbJ_EpEAg/review" target="blank_">MATEO SEOANE SOBRAL 3</a>
+    </div>
+</div>
+<div class="reviews">
+    <h1>Nuestros clientes opinan...</h1>
+    <div class="contenedor-reviews">
+        <div class="col-xl-3 col-lg-6 col-md-6" *ngFor="let opinion of opiniones">
+            <div class="review">
+                <div class="cliente">
+                    {{opinion.cliente}}
+                </div>
+                <div class="valoracion">
+                    Valoracion: <img src="assets/images/comunes/estrella.png">
+                    <img *ngIf="opinion.estrellas > 1" src="assets/images/comunes/estrella.png">
+                    <img *ngIf="opinion.estrellas > 2" src="assets/images/comunes/estrella.png">
+                    <img *ngIf="opinion.estrellas > 3" src="assets/images/comunes/estrella.png">
+                    <img *ngIf="opinion.estrellas > 4" src="assets/images/comunes/estrella.png">
+                </div>
+                <div class="comentarios">
+                    {{opinion.comentario}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

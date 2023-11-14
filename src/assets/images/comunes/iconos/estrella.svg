@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="55px" height="55px" viewBox="0 0 55 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>estrella</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="03-HOME-COMPLETA" transform="translate(-349.000000, -1898.000000)">
+            <g id="estrella" transform="translate(346.000000, 1896.000000)">
+                <ellipse id="Oval" fill="#DDB246" fill-rule="nonzero" cx="30.273935" cy="29.6909903" rx="26.7468746" ry="27.2917184"></ellipse>
+                <path d="M18.3722714,35.2353284 L16.3728272,47.9087646 C16.065892,49.8528404 17.2458847,50.7980365 19.007363,50.0199068 L29.8145306,45.2464849 L40.6306508,49.9977751 C42.3938976,50.7722729 43.506579,49.7938224 43.1157534,47.8662035 L40.6306508,35.2353284 L49.8877793,26.4663874 C51.3039695,25.1381417 50.9218756,23.7655191 49.0346168,23.4143619 L37.2237481,21.2083369 L31.4378494,10.2940913 C30.5208019,8.56463671 29.0369689,8.56463671 28.1229057,10.2962478 L22.3586703,21.2190055 L10.5520017,23.44319 C8.66529561,23.7987735 8.25424347,25.1962518 9.63373843,26.5647886 L18.3722714,35.2353284 Z" id="Fill-1" fill="#FFFFFF" fill-rule="evenodd"></path>
+            </g>
+        </g>
+    </g>
+</svg>

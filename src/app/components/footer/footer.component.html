@@ -1,0 +1,85 @@
+<div class="footer">
+  <div class="contenido">
+    <div class="row iconos-pagos">
+      <!--<div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-apple-pay.png" alt="icono-apple-pay">
+      </div>
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-am-ex.png" alt="icono-am-ex">
+      </div>
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-amazon-pay.png" alt="icono-amazon-pay">
+      </div>
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-bizum.png" alt="icono-bizum">
+      </div>
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-google-pay.png" alt="icono-google-pay">
+      </div>-->
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-mastercard.png" alt="icono-mastercard">
+      </div>
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-mastercard-maestro.png" alt="icono-mastercard-maestro">
+      </div>
+      <!--<div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-paypal.png" alt="icono-paypal">
+      </div>
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-stripe.png" alt="icono-stripe">
+      </div>-->
+      <div class="col-md-1 col-sm-2 col-3">
+        <img class="icono-pagos" src="assets/images/home/icono-visa.png" alt="icono-visa">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 grupo">
+        <h5>Productos</h5>
+        <div class="bt" routerLinkActive="selected" routerLink="/tienda/{{item.url}}" *ngFor="let item of categorias">
+          <span [innerHTML]=" item.nombre"></span>
+        </div>
+      </div>
+      <div class="col-md-4 grupo">
+        <h5>Tienda</h5>
+        <div class="bt" routerLink="/{{item}}" *ngFor="let item of apartados">
+          <span [innerHTML]=" item | translate"></span>
+        </div>
+        <a class="bt-rrss" href="https://www.facebook.com/charcuredondo" target="blank_">
+          <img src="assets/images/comunes/facebook.png" />
+        </a>
+        <a class="bt-rrss" href="https://instagram.com/charcuredondo?igshid=MzRlODBiNWFlZA==" target="blank_">
+          <img src="assets/images/comunes/instagram.png" />
+        </a>
+        <div class="pie-direcciones">
+          <label class="email"><a
+              href="mailto:pedido@charcuredondo.com?subject=contacto web">pedido@charcuredondo.com</a></label>
+          <label class="pie-direccion">Joaquín María Jalón, 18. <a href="tel:983 47 15 79">983 47 15 79</a></label>
+          <label class="pie-direccion">Portillo del Prado, 17. <a href="tel:983 25 14 55">983 25 14 55</a></label>
+          <label class="pie-direccion">Mateo Seoane Sobral, 3. <a href="tel:983 25 25 49">983 25 25 49</a></label>
+        </div>
+      </div>
+      <div class="col-md-4 grupo">
+        <h5>Avisos legales</h5>
+        <div class="bt" routerLink="/{{item}}" *ngFor="let item of legales">
+          <span [innerHTML]=" item | translate"></span>
+        </div>
+        <h5>¡ÚNETE AL CLUB REDONDO Y RECIBE OFERTAS, DESCUENTOS, NOVEDADES Y MUCHO MÁS!</h5>
+        <span>Suscríbete a nuestra lista de correo</span>
+        <form class="email-newsletter" (ngSubmit)="correo_bienvenida()">
+          <div [formGroup]="emailNewsletterForm">
+            <input type="email" id="mail-footer" placeholder="Tu mail" formControlName="email" required>
+            <button [disabled]="!emailNewsletterForm.valid" id="boton-footer" type="submit">¡ME APUNTO!</button>
+            <label>
+              <input type="checkbox" formControlName="permisos" id="cbox-footer" /> Necesitamos tu permiso para recibir
+              nuestros
+              emails y mensajes
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="logotipos_footer">
+  <img src="assets/images/comunes/logotipos_footer.png" alt="Logotipos Gobierno">
+</div>

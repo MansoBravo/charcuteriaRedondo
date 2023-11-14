@@ -1,0 +1,38 @@
+<div class="cookies">
+  <div class="ventana">
+    <p>Privacidad y cookies: Utilizamos Cookies propias y de terceros para analizar nuestros servicios y mostrarte publicidad relacionada con tus preferencias en base a un perfil elaborado a partir de tus hábitos de navegación (por ejemplo, páginas visitadas). Puedes obtener más información y configurar tus preferencias <a class="bt-aqui" (click)="openModal('modal-cookies')"> AQUÍ</a>.
+      <a class="bt-aceptar" (click)="_datosService.aceptaCookies();">ACEPTAR</a>
+      <a class="bt-rechazar" (click)="_datosService.rechazaCookies()">RECHAZAR</a>
+      <a routerLink="/politica-de-cookies">Leer Política de cookies</a>
+    </p>
+  </div>
+</div>
+<jw-modal id="modal-cookies">
+  <h1>Resumen de Privacidad</h1>
+  <button (click)="closeModal('modal-cookies')" class="cerrar-cookies" mat-button>
+    X
+  </button>
+  <div class="texto-cabecera">
+    <p>Utilizamos Cookies propias y de terceros para analizar nuestros servicios y mostrarte publicidad relacionada con tus preferencias en base a un perfil elaborado a partir de tus hábitos de navegación (por ejemplo, páginas visitadas). Puedes obtener más información y configurar tus preferencias aquí.</p>
+    <a routerLink="/politica-de-cookies" (click)="closeModal('modal-cookies')">Leer Política de cookies</a>
+  </div>
+  <div class="seccion-cookies">
+    <label class="titulo">Necesarias</label>
+    <div class="opcion">Siempre activado</div>
+    <p>
+      Las cookies necesarias son absolutamente esenciales para que el sitio web funcione correctamente. Esta categoría solo incluye cookies que garantizan funcionalidades básicas y características de seguridad del sitio web. Estas cookies no almacenan ninguna información personal. Siempre Activado
+    </p>
+  </div>
+  <div class="seccion-cookies">
+    <label class="titulo">No Necesarias</label>
+    <div class="opcion">
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="isChecked" (change)="_datosService.cookies(isChecked);">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <p>
+      Las cookies que pueden no ser particularmente necesarias para que el sitio web funcione y se utilizan específicamente para recopilar datos personales del usuario a través de análisis, anuncios y otros contenidos integrados se denominan cookies no necesarias. Es obligatorio obtener el consentimiento del usuario antes de ejecutar estas cookies en su sitio web.
+    </p>
+  </div>
+</jw-modal>

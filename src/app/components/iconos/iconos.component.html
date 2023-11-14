@@ -1,0 +1,7 @@
+
+<div class="iconos">
+  <div *ngFor="let ico of arrIconos" class="icono">
+      <img src="/assets/images/comunes/iconos/{{ico}}.svg" alt="">
+      <p class="texto" [innerHTML]="'icono-' + ico | translate" ></p>
+  </div>
+</div>

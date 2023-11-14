@@ -1,0 +1,6 @@
+<div class="ventana">
+  <h3 class="titulo" [innerHTML]=" 'producto-anadido' | translate"></h3>
+<hr>
+  <div class="btn btn-comprar" (click)="_datosService.cambiaVistaCarrito();" [innerHTML]="'seguir-comprando' | translate"></div>
+  <div class="btn btn-comprar volver" routerLink="/carrito" (click)="_datosService.cambiaVistaCarrito();" [innerHTML]="'tramitar-compra' | translate">ee</div>
+</div>

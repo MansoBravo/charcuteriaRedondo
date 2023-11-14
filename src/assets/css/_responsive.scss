@@ -1,0 +1,618 @@
+@import './variables';
+
+//MAYOR QUE XS
+@media (max-width: 480px) {
+}
+
+//MAYOR QUE SM
+@media (min-width: 992px)  {
+
+
+}
+
+@media (min-width:575px) and (max-width:768px){
+
+  .icono-pagos{
+    margin-bottom: 10%;
+  }
+
+}
+
+//MENOR QUE LG
+@media (max-width: 1200px) {
+
+}
+
+
+//MENOR QUE MD
+@media (max-width: 991px) {
+
+  //HEADER
+  .header {
+    text-align: left;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    .logotipo {
+      width: 100px;
+      margin-bottom: 0px;
+    }
+    .menu-interior {
+      display: none;
+    }
+    .bts-inicio-sesion {
+      display: none;
+    }
+    .buscador {
+      position: sticky;
+      width: 60%;
+    }
+    .header-info {
+      display: none;
+    }
+    .header-info-movil {
+      display: block;
+      margin-top: 10px;
+    }
+
+    &.fixed {
+      .logotipo {
+        width: 100px;
+        margin-bottom: 0px;
+      }
+    }
+
+  }
+
+  .header-menus {
+      top: 20px !important;
+    .icomenu {
+        &.bolsa {
+          display: inline-block !important;
+          position: relative;
+        }
+      }
+  }
+
+  .banner-header {
+    margin-top: 130px;
+    .item {
+      margin: 10px auto;
+    }
+    .icono {
+      width: 40px;
+    }
+    .texto {
+      width: calc(100% - 120px);
+      max-width: none;
+      vertical-align: middle;
+    }
+    .info {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  //CONCTACTO
+  .contacto {
+    .direccion {
+      display: block;
+      font-size: 1em;
+      margin: 5px;
+    }
+
+    .contenido {
+      padding: 50px 0;
+      .titulo {
+        font-size: 20pt;
+      }
+      .titulo2 {
+        font-size: 15pt;
+      }
+
+      .icono {
+        width: 20px;
+        height: 30px;
+        display: inline-block;
+        margin: 10px 5px;
+        overflow: hidden;
+        &:hover {
+          img {
+            width: 40px !important;
+            opacity: 1;
+          }
+        }
+        img {
+          width: 35px !important;
+          margin: 0 auto;
+          opacity: 0.8;
+          transition: all 0.5s;
+        }
+      }
+
+      .subtitulo {
+        font-size: 13pt;
+        a {
+          display: inline-block;
+          margin: 5px 20px;
+          color: $blanco;
+          height: 30px;
+          transition: all 0.5s;
+
+          img {
+            height:20px !important;
+            transform: rotate(-10deg);
+            transition: all 0.5s;
+
+          }
+
+          &:hover {
+            img {
+              height:20px !important;
+              transform: rotate(0deg);
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+
+  .contenido-carrito {
+
+    &.enScroll {
+      margin-top: 120px !important;
+    }
+
+    &.open {
+      margin: 200px auto 50px auto !important;
+    }
+  }
+  //FOOTER
+  .footer2 {
+    display: none;
+  }
+
+  .footer {
+    padding: 50px 0;
+
+    .grupo {
+      text-align: left;
+      max-width: 100%;
+      padding: 20px 40px;
+      h5 {
+        font-size: 18pt;
+        font-weight: 600;
+        border-bottom: 1px solid rgba($marron, 0.5);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+      }
+    }
+    .bt-facebook {
+      margin-top: 10px;
+    }
+    .pie-direcciones {
+      float: left;
+      position: initial;
+      margin-top: 10px;
+      .pie-direccion {
+        font-size: 12pt;
+      }
+    }
+  }
+
+  .fotoCabecera {
+    margin-top: 195px;
+  }
+
+  //HOME
+  .home-destacados {
+    padding: 10px;
+    min-height: 50px;
+    .slide {
+      height: auto !important;
+      .item {
+        &.mini {
+          display: none !important;
+        }
+        &.actual {
+          width: 80vw;
+          height: 80vw;
+          border: 50px solid $blanco;
+        }
+      }
+    }
+  }
+
+  .home-receta {
+    .receta, .btn-recetas  {
+      display: none;
+    }
+  }
+
+  .home-receta-movil {
+    display: block;
+  }
+
+  //PRODUCTOS
+  .productos-banda-categorias {
+    display: block;
+  }
+
+  .productos-categorias {
+    display: none;
+    line-height: 0;
+  }
+
+  .en-desktop {
+    display: none !important;
+  }
+
+  .en-movil {
+    display: block !important;
+  }
+
+  .producto-ficha {
+    &.redondo {
+      &.enScroll {
+        margin-top: 50px !important;
+      }
+    }
+    &.enScroll {
+      margin-top: 120px !important;
+    }
+    &.open {
+      opacity: 1;
+      margin: 200px auto 0px auto !important;
+    }
+  }
+
+
+  .productos-listado {
+    .buscador {
+      display: block;
+      width: 100%;
+      min-height: 0;
+
+      .head {
+        cursor: pointer;
+      }
+
+      .busqueda {
+        display: none;
+      }
+    }
+
+    .resultados {
+      width: 100%;
+      display: block;
+
+      &.fixed {
+        margin-left: 0px;
+      }
+    }
+
+
+  }
+  .cabecera-home {
+    margin-top: 195px;
+  }
+  .productos-cabecera-arriba {
+    margin-top: 210px;
+  }
+  .productos-cabecera {
+    &.open {
+      opacity: 1;
+    }
+
+    &.enScroll {
+    }
+  }
+  //PRODUCTO
+  .producto-cabecera {
+    //height: 120vw !important;
+  }
+
+  .producto-foto {
+    bottom: -16px;
+    height: 0px !important;
+    width: 0px !important;
+    border-top-left-radius: 600px;
+    border-top-right-radius: 600px;
+
+    &.open {
+      height: 50vw !important;
+      width: 100vw !important;
+
+    }
+  }
+
+  //NOTICIAS
+  .ficha-blog {
+    margin-top: 140px !important;
+
+    &.open {
+      opacity: 1;
+      margin: 200px auto !important;
+    }
+  }
+  .noticias {
+    width: 100%;
+    display: block;
+
+    .item {
+      width: 100%;
+      background: $blanco;
+      height: 450px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      margin: 20px auto;
+      transition: all 1s;
+      border: 1px solid rgba($negro, 0.2);
+
+      .dato {
+        font-size: 9pt;
+        font-weight: 600;
+        text-align: left;
+        margin: 10px auto;
+      }
+
+      .foto {
+        width: 100%;
+        height: 220px;
+        position: relative;
+        display: block;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: none;
+        opacity: 1;
+        transition: all 1s;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          background: $negro;
+          opacity: 0;
+          width: 100%;
+          height: 220px;
+          transition: all 1s;
+        }
+      }
+
+      .info {
+        padding: 20px;
+        .titulo {
+          font-family: 'Montserrat', serif;
+          font-weight: 700;
+          font-size: 13pt;
+          line-height: normal;
+          display: block;
+        }
+        .intro {
+          width:100%;
+          text-align: left;
+          font-size: 10pt;
+        }
+      }
+
+      &:hover {
+        border: 1px solid rgba($negro, 0.3);
+        .foto {
+            &::after {
+              opacity: 0.1;
+            }
+          }
+      }
+    }
+  }
+
+  .noticia {
+    margin: 100px auto;
+  }
+
+  .noticias-submenu{
+    width: 100%;
+    display: block;
+    .cabecera{
+      cursor: pointer;
+    }
+
+    .listado {
+      display: none;
+
+      &.open {
+        display: block;
+      }
+    }
+
+    .bt{
+      padding: 3px 20px;
+      border-bottom: 1px solid $gris;
+      cursor: pointer;
+
+      &.selected {
+        color: $azul;
+      }
+    }
+  }
+
+  .tituloRedondo {
+    font-size: 50px !important;
+  }
+
+  .seccion-cabecera {
+    margin-top: 160px;
+    &.relativo {
+      .titular {
+        margin-top: 50px !important;
+      }
+
+    }
+  }
+
+  .tabla-desplegable {
+    padding: 0 !important;
+  }
+
+  jw-modal .jw-modal .jw-modal-body {
+    width: 100% !important;
+  }
+  .bt-aceptar {
+    margin-top: 10px !important;
+  }
+
+  .enlaces-reviews .boton-reviews {
+    margin: 20px 20px;
+    width: 60%;
+  }
+
+  .opiniones-home .boton-opiniones {
+    width: 65%;
+  }
+  .opiniones-home .contenedor-opiniones .opinion {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  .header-reviews {
+    margin-top: 175px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+
+//menor QUE XS
+@media (max-width: 479px) {
+  .menu {
+    .listado {
+      .logotipo {
+        display: none;
+      }
+    }
+  }
+  //HOME
+  .home-intro2 {
+    height: auto !important;
+    .marca {
+      height: 150vw;
+    }
+  }
+
+  .home-intro3 {
+    .imagen {
+      max-width: 300px;
+    }
+    .superTitulo {
+      font-size:25pt !important;
+    }
+  }
+
+  //HOME
+  .home-destacados {
+    .slide {
+      .item {
+        .contenido {
+          .titulo {h3 {font-size: 12pt; }}
+          .foto {  max-width: 200px;}
+        }
+      }
+    }
+  }
+
+
+  .seccion-cabecera {
+    .contenido {
+      .titular {
+        .subtitulo {font-size: 10pt; color:$dorado;}
+        .titulo, .titulo2 {font-size: 15pt; font-family: 'futuraBold';}
+      }
+    }
+  }
+
+  //PRODUCTO //
+  .producto-cabecera {
+    display: none;
+  }
+
+
+
+
+  .titular {
+    .subtitulo {font-size: 10pt; color:$dorado;}
+    .titulo, .titulo2 {font-size: 15pt; font-family: 'futuraBold';}
+  }
+
+  .error404 {
+    margin-top: 140px;
+    padding-top: 20px;
+    .texto-error404 {
+      margin-top: -70px;
+      .titulo {
+        font-size: 40px;
+        line-height: 25px;
+      }
+      .subtitulo {
+        font-size: 20px;
+      }
+      .texto {
+        padding: 0 10px;
+      }
+    }
+  }
+
+  .pedidos-tabla td {
+    font-size: 8pt;
+    .btn {
+      min-width: auto;
+      font-size: 8pt;
+    }
+  }
+  .bts-inferior {
+   text-align: center;
+    .btn {
+      margin-right: 0;
+    }
+    .btn-derecha {
+      float: none;
+    }
+  }
+  
+  .header-reviews {
+    margin-top: 195px;
+  }
+  
+  .enlaces-reviews {
+    padding: 20px;
+    .boton-reviews {
+      margin: 20px 0;
+      width: 100%;
+    }
+  }
+  .reviews {
+    padding: 20px;
+    .contenedor-reviews {
+      padding: 0;
+    }
+  } 
+
+  .opiniones-home .boton-opiniones {
+    width: 100%;
+    font-size: 16px;
+  }
+  .opiniones-home .contenedor-opiniones .opinion {
+    width: 100%;
+  }
+
+}

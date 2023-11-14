@@ -1,0 +1,35 @@
+<!--
+  <div [ngClass]="['item', item.en_reposicion  || item.fuera_de_temporada ?  'inactiva' : '']">
+  <div class="foto">
+    <img src="{{item.imagenes[0].path}}" />
+  </div>
+  <div class="info">
+    <h3 class="titulo" [innerHTML]="item.nombre">hola</h3>
+    <p [innerHTML]="item.formato"></p>
+    <div class="precio" *ngIf="!item.en_reposicion && !item.fuera_de_temporada ">
+      <div class="pvp">
+        <span class="anterior" *ngIf="isOferta(item)">{{item?.precio | formatocomas}}</span>
+        <span>{{item?.precio_rebajado | formatocomas}}</span>
+      </div>
+      <p [innerHTML]="item.caracteristicas"></p>
+    </div>
+  </div>
+  <div class="dato">
+    <div class="en-reposicion" *ngIf="item.en_reposicion">
+      <span [innerHTML]="'en-reposicion'| translate"></span>
+    </div>
+    <div class="fuera-de-temporada" *ngIf="item.fuera_de_temporada">
+      <span [innerHTML]="'fuera-de-temporada'| translate"></span>
+    </div>
+    <div class="etiqueta" *ngIf="item.etiqueta">
+      <span [innerHTML]="item.etiqueta"></span>
+    </div>
+  </div>
+  <div class="tierra" *ngIf="item.tierra_de_sabor">
+    <img src="assets/images/comunes/corazon.svg" alt="">
+  </div>
+  <div class="bt-comprar">
+    <img src="assets/images/comunes/bt-compra.svg" alt="comprar">
+  </div>
+</div>
+-->

@@ -1,0 +1,112 @@
+<jw-modal id="modal-fase-1">
+  <button (click)="closeModal('modal-fase-1')" class="cerrar-modal" mat-button>
+    <div class="boton-x">&times;</div>
+  </button>
+  <div class="titulo-sup">
+    <p>¿Nos visitas por primera vez?</p>
+  </div>
+  <div class="texto-negrita">
+    <p>¡¡ACCEDE A TU DESCUENTO DE BIENVENIDA!!</p>
+  </div>
+  <div class="texto-3">
+    <p>Si quieres saber el % de descuento que tienes con tu primer pedido te lo mostramos en el <b>siguiente paso</b>:
+    </p>
+  </div>
+  <form class="email-bienvenida" (ngSubmit)="descuento_bienvenida()">
+    <div [formGroup]="emailDescuentoForm">
+      <input type="email" placeholder="Paso 1: Escribe tu mail" formControlName="email" required>
+      <div class="sms" *ngIf="sms" [innerHTML]="sms"> </div>
+      <button [disabled]="!emailDescuentoForm.valid" type="submit" class="btn-descuento"
+        [innerHTML]=" '¡Muéstrame MI DESCUENTO ahora!' | translate"></button>
+    </div>
+  </form>
+  <div class="texto-inferior">
+    <p>
+      *Al enviar tu información, aceptas la política de privacidad. Puedes darte de baja en cualquiera de nuestros mails
+      con un solo clic. Nunca cederemos tus datos bajo ninguna circunstancia.
+    </p>
+  </div>
+</jw-modal>
+
+<jw-modal id="modal-fase-1-completa">
+  <button (click)="closeModal('modal-fase-1-completa')" class="cerrar-modal" mat-button>
+    <div class="boton-x">&times;</div>
+  </button>
+  <div class="titulo-sup">
+    <p>Este es tu código con un <b>10%</b> de Descuento por tu Primera Compra: </p>
+  </div>
+  <div id="codigo-descuento"></div>
+  <div class="texto-inferior">
+    <p>
+      Introduce tu código de descuento al finalizar tu pedido, donde pone “Código de Descuento”
+    </p>
+  </div>
+  <div class="texto-negrita">
+    <p>Nuestro productos te van a encantar… descubrirás “EL SABOR DE LAS COSAS BUENAS”</p>
+  </div>
+</jw-modal>
+
+
+<jw-modal id="modal-fase-2">
+  <button (click)="closeModal('modal-fase-2')" class="cerrar-modal" mat-button>
+    <div class="boton-x">&times;</div>
+  </button>
+  <div class="contenedor-flex">
+    <div class="contenedor-imagen">
+      <div class="banner-novedad">¡NOVEDAD!</div>
+      <img
+        src="https://charcuredondo.com.es/files/preferences/{{imagenRegalo.owner_type}}/{{imagenRegalo.type}}/{{imagenRegalo.id}}{{imagenRegalo.extension}}">
+    </div>
+    <div class="contenedor-texto">
+      <div class="titulo-sup">
+        <p><b>¡Espera!</b> antes de irte...</p>
+      </div>
+      <div class="texto-negrita">
+        <p>¿Quieres este Regalo GRATIS con tu primer pedido?</p>
+      </div>
+      <div class="texto-3">
+        Si no eres de descuentos, dime tu email y te doy un código para que puedas <b>conseguir este Regalo con tu
+          pedido totalmente GRATIS.</b>
+      </div>
+      <form class="email-bienvenida" (ngSubmit)="regalo_bienvenida()">
+        <div [formGroup]="emailRegaloForm">
+          <input type="email" placeholder="Paso 1: Escribe tu mail" formControlName="email" required>
+          <div class="sms" *ngIf="sms2" [innerHTML]="sms2"> </div>
+          <button [disabled]="!emailRegaloForm.valid" type="submit" class="btn-regalo"
+            [innerHTML]=" 'Sí, muéstrame el código' | translate"></button>
+        </div>
+      </form>
+      <div class="texto-inferior">
+        <p>
+          *Al enviar tu información, aceptas la política de privacidad. Puedes darte de baja en cualquiera de nuestros
+          mails con un solo clic. Nunca cederemos tus datos bajo ninguna circunstancia.
+        </p>
+      </div>
+    </div>
+  </div>
+</jw-modal>
+
+<jw-modal id="modal-fase-2-completa">
+  <button (click)="closeModal('modal-fase-2-completa')" class="cerrar-modal" mat-button>
+    <div class="boton-x">&times;</div>
+  </button>
+  <div class="contenedor-flex">
+    <div class="contenedor-imagen">
+      <div class="banner-novedad">¡NOVEDAD!</div>
+      <img
+        src="https://charcuredondo.com.es/files/preferences/{{imagenRegalo.owner_type}}/{{imagenRegalo.type}}/{{imagenRegalo.id}}{{imagenRegalo.extension}}">
+    </div>
+    <div class="contenedor-texto">
+      <div class="texto-negrita">
+        <p>¡Bienvenid@!<br> Aquí tienes tu cupón para conseguir tu Regalo GRATIS con tu primer pedido:</p>
+      </div>
+      <div id="codigo-regalo"></div>
+      <div class="texto-3">
+        <p><b>¿Cómo conseguir tu Regalo GRATIS?</b></p>
+        <p>Introduce tu código de Regalo al finalizar tu pedido, donde pone “Código de cupón”.</p>
+      </div>
+      <div class="btn-regalo btn-tienda" [innerHTML]=" '!Sí, llévame a la tienda!' | translate"
+        (click)="closeModal('modal-fase-2-completa')" routerLink="/"></div>
+    </div>
+  </div>
+</jw-modal>

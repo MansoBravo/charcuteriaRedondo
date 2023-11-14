@@ -1,0 +1,13 @@
+<div class="error404">
+  <img src="assets/images/comunes/error404.png"/>
+  <div class="texto-error404">
+    <label class="titulo">ERROR 404</label>
+    <label class="subtitulo">Página no encontrada</label>
+    <label class="texto">Lo sentimos, pero la página que buscas no existe o no se puede encontrar.<br>Prueba mejor suerte en estos links:</label>
+    <div class="enlaces">
+      <div [ngClass]="['bt']" routerLink="/{{item}}" *ngFor="let item of apartados">
+        <span [innerHTML]="item | translate"></span>
+      </div>
+    </div>
+  </div>
+</div>

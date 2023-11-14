@@ -1,0 +1,64 @@
+<div class="seccion-cabecera fijo" [ngClass]="{'open': vistaApartado}">
+  <div class="seccion-foto fill"  [ngStyle]="{'background-image': 'url(assets/images/recetas.jpg)'}"></div>
+
+  <div class="titular">
+    <h2 class="subtitulo" [innerHTML]="'nuestra-seleccion'| translate"></h2>
+    <h1 class="titulo" [innerHTML]="'recetas-agroinnova'| translate"></h1>
+  </div>
+</div>
+
+<div class="productos-listado content" [ngClass]="{'open': vistaApartado}" #banda>
+  <div class="cabecera" [class.fixed]="isScrolled"  [ngClass]="['buscador', buscadorOpen ? 'open' : '']">
+    <div class="head"  (click)="changeBuscador()" [innerHTML]="'categorias'| translate"></div>
+    <div class="busqueda" >
+<!--
+      <form class="filtros" [formGroup]="form" >
+        <label class="opcion" formArrayName="tags" *ngFor="let order of form.controls?.tags.controls; let i = index">
+          <input type="checkbox" [formControlName]="i">
+          <span [innerHTML]="tags[i].text"></span>
+        </label>
+      </form>
+      <h5 class="titulo" [innerHTML]="'categorias'| translate"></h5>
+-->
+
+      <div class="nav-categorias">
+        <div [ngClass]="['bt', rutaCategoria == '' ? 'activa' : '']" (click)="buscadorOpen = false;" routerLink="/recetas" [innerHTML]="'todas'| translate"></div>
+        <div [ngClass]="['bt', rutaCategoria == item.url ? 'activa' : '']" (click)="buscadorOpen = false;" *ngFor="let item of categorias" routerLink="/recetas/{{item.url}}" [innerHTML]="item[_datosService.getCampo('nombre')]"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="resultados" [class.fixed]="isScrolled">
+    <div class="head">
+      <div class="migas">
+        <span routerLink="/recetas" [innerHTML]="'recetas'| translate"></span>
+        <span *ngIf="categoriaSeleccionada.nombre" [innerHTML]="categoriaSeleccionada[_datosService.getCampo('nombre')]"></span>
+      </div>
+    </div>
+    <div class="container recetas-listado listado" [ngClass]="{'open': vistaApartado}">
+      <div class="row"  *ngIf="recetasFiltradas.length > 0;else noresultados">
+        <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let item of recetasFiltradas">
+          <div class="receta-item"  routerLink="/receta/{{item.url}}">
+            <div class="foto fill" [ngStyle]="{'background-image': 'url(' + item.imagenes[0].path + ')'}"></div>
+            <h3 class="titulo" [innerHTML]="item[_datosService.getCampo('title')]"></h3>
+            <h6 class="subtitulo" [innerHTML] = "getNombreCategoria(item.category_id)"></h6>
+            <div class="btn-plus">+</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noresultados class="row">
+        <div class="col-md-12">
+          <div class="info-a-granel margin-top-20">
+            <h1 class="titulo" [innerHTML]="'no-resultados' | translate"></h1>
+            <strong [innerHTML]="'no-resultados-info' | translate"></strong>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+
+  </div>
+
+
+
+</div>

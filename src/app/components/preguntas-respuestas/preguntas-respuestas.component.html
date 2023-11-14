@@ -1,0 +1,32 @@
+<div class="header-reviews">
+    <img src="assets/images/preguntas_frecuentes/cabecera_preguntas_frecuentes.png">
+</div>
+
+<div id="preguntas-respuestas">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Aquí respondemos algunas de las preguntas más frecuentes sobre nosotros y nuestro productos.
+                    Si tienes alguna duda y no está respondida aquí, haz click en "Tengo una pregunta" ¡y estarenis
+                    ebcabtadis de responderla!
+                </p>
+            </div>
+            <div class="col-md-12 text-center">
+                <div class="btn btn-comprar" routerLink="/tienda"> <span>Sí, tengo una pregunta</span> </div>
+            </div>
+            <div class="accordion-wrapper">
+                <div class="accordion" *ngFor="let preguntaFrecuente of preguntasRespuestas">
+                    <input type="radio" name="radio-a" id="check{{preguntaFrecuente.id}}" checked>
+                    <label class="accordion-label"
+                        for="check{{preguntaFrecuente.id}}">{{preguntaFrecuente.pregunta_frecuente}}</label>
+                    <div class="accordion-content">
+                        <p>{{preguntaFrecuente.respuesta}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <div class="btn btn-comprar" routerLink="/tienda"> <span>ir a tienda</span> </div>
+            </div>
+        </div>
+    </div>
+</div>

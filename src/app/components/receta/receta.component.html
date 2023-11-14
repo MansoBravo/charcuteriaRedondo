@@ -1,0 +1,84 @@
+<div class="seccion-cabecera fijo" #cabecera [ngClass]="{'open': vistaApartado}">
+  <div class="seccion-foto fill"  [ngStyle]="{'background-image': 'url(' + receta.imagenes[0].path + ')'}"></div>
+  <div class="titular">
+
+  </div>
+
+</div>
+
+<div class="producto-ficha margin-bottom-10" [ngClass]="{'open': vistaApartado}">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12 titular text-left">
+          <h3 class="titulo" [innerHTML]="receta[_datosService.getCampo('title')]"></h3>
+          <h2 class="subtitulo" [innerHTML]="'recetas-agroinnova'| translate | uppercase"></h2>
+          <hr>
+        </div>
+      <div class="col-md-4">
+          <h3 [innerHTML]="'ingredientes'| translate"></h3>
+          <p class="descripcion text-justify" [innerHTML]="receta[_datosService.getCampo('ingredientes')]"></p>
+      </div>
+      <div class="col-md-8">
+          <h3 [innerHTML]="'elaboracion'| translate"></h3>
+          <p class="descripcion text-justify" [innerHTML]="receta[_datosService.getCampo('elaboracion')]"></p>
+          <div class="btn btn-comprar volver"  (click)="_datosService.volver();">  <span [innerHTML]=" 'volver' | translate"></span> </div>
+
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <hr>
+</div>
+
+
+
+<!-- LISTADO DE PRODUCTOS RELACIONADOS -->
+<section class="producto-recetas margin-top-10 margin-bottom-10" *ngIf="productosFiltrados">
+  <div class="titular">
+    <h2 class="subtitulo" [innerHTML]="'que-necesitas'| translate"></h2>
+    <h1 class="titulo" [innerHTML]="'productos-para-receta'| translate"></h1>
+    <h3 [innerHTML]="receta[_datosService.getCampo('title')]"></h3>
+  </div>
+  <div class="container productos-listado"  [ngClass]="{'open': vistaApartado}">
+    <div class="row listado">
+      <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let item of productosFiltrados">
+        <div  [ngClass]="['item', item.en_reposicion  || item.fuera_de_temporada ?  'inactiva' : '']">
+          <div class="foto" routerLink="/producto/{{item.url}}">
+            <img src="{{item.imagenes[0].path}}" />
+          </div>
+          <div class="info" routerLink="/producto/{{item.url}}">
+            <h3 class="titulo" [innerHTML]="item[_datosService.getCampo('nombre')]"></h3>
+            <p [innerHTML]="item[_datosService.getCampo('formato')]"></p>
+            <div class="etiqueta" *ngIf="item.etiqueta">
+              <span [innerHTML]="item[_datosService.getCampo('etiqueta')]"></span>
+            </div>
+          </div>
+          <div class="precio" *ngIf="!item.en_reposicion && !item.fuera_de_temporada ">
+            <div class="pvp">
+              <span class="anterior" *ngIf="isOferta(item)">{{item?.precio | formatocomas}}</span>
+              <span>{{item?.precio_rebajado | formatocomas}}</span>
+            </div>
+            <p [innerHTML]="item[_datosService.getCampo('caracteristicas')]"></p>
+          </div>
+          <div class="dato" routerLink="/producto/{{item.url}}">
+            <div class="en-reposicion" *ngIf="item.en_reposicion">
+              <span [innerHTML]="'en-reposicion'| translate"></span>
+            </div>
+            <div class="fuera-de-temporada" *ngIf="item.fuera_de_temporada">
+              <span [innerHTML]="'fuera-de-temporada'| translate"></span>
+            </div>
+
+          </div>
+          <div class="tierra" *ngIf="item.tierra_de_sabor">
+            <img src="assets/images/comunes/corazon.svg" alt="">
+          </div>
+
+          <div class="bt-comprar" (click)="addProducto(item); _datosService.cambiaVistaCarrito();">
+            <img src="assets/images/comunes/bt-compra.svg" alt="comprar">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-banner></app-banner>
+</section>

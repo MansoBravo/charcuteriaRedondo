@@ -1,0 +1,227 @@
+<div class="contenido-carrito carrito"  [ngClass]="{'open': vistaApartado}" [class.enScroll]="_datosService.globalScroll || _datosService.seccion != 'productos'">
+    <div class="cabecera">
+    <h1  [innerHTML]="'checkout-titulo' | translate"></h1>
+  </div>
+
+  <div class="row" *ngIf="!enviando">
+      <div class="col-lg-8 col-md-12">
+      <form class="checkout-form"  (ngSubmit)="cmpDatos()" role="form" >
+
+      <div class="grupo-registro" >
+        <div class="titulo">
+          <h6  [innerHTML]="'datos-usuario' | translate"></h6>
+        </div>
+        <br>
+    <!-- DATOS DE USUARIO -->
+        <div [formGroup]="datosForm">
+          <mat-form-field >
+             <input matInput formControlName="username" type="text" [placeholder]="'nombre-apellidos'| translate" username required [errorStateMatcher]="formMatcher">
+          </mat-form-field>
+          <mat-form-field >
+            <input matInput formControlName="email" type="email" placeholder="Email" required email readonly>
+          </mat-form-field>
+          <mat-form-field >
+            <input matInput formControlName="telefono" required type="text" [placeholder]="'telefono'| translate" telefono  [errorStateMatcher]="formMatcher">
+          </mat-form-field>
+          <h6 class="resalte">Tus Observaciones:</h6>
+          <mat-form-field >
+            <textarea matInput formControlName="envioObservaciones" placeholder="Observaciones" envioObservaciones></textarea>
+          </mat-form-field>
+          <small>*Describe como quieres que te entreguemos el pedido y las horas más adecuadas para la entrega. Ejemplo: He pedido 1 kg de morcillo y lo quiero cortado en dados y envasado al vacío. Mañanas de 11 a 2 Tardes de 16 a 20h.</small>
+        </div>
+        <br>
+        <!-- DATOS DE FACTURACIÓN -->
+        <div class="titulo">
+          <h6  [innerHTML]="'datos-facturacion' | translate"></h6>
+          <small [innerHTML]="'datos-facturacion-explica' | translate"></small>
+
+        </div>
+        <br>
+      <div [formGroup]="datosForm">
+        <mat-form-field >
+           <input matInput formControlName="nombre" type="text" [placeholder]="'nombre-facturacion'| translate" nombre required [errorStateMatcher]="formMatcher">
+           <mat-error *ngIf="nombre" [innerHTML]="'campo-obligatorio' | translate"></mat-error>
+        </mat-form-field>
+        <mat-form-field >
+          <input matInput formControlName="razon" type="text" [placeholder]="'razon-social'| translate" razon [errorStateMatcher]="formMatcher">
+        </mat-form-field>
+
+        <mat-form-field >
+          <input matInput  formControlName="nif" type="text" [placeholder]="'dni'| translate" nif required [errorStateMatcher]="formMatcher">
+          <mat-error *ngIf="nif" [innerHTML]="'campo-obligatorio' | translate"></mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field >
+          <input matInput  formControlName="dirFacturacion" type="text" [placeholder]="'direccion'| translate" dirFacturacion required  [errorStateMatcher]="formMatcher">
+          <mat-error *ngIf="dirFacturacion" [innerHTML]="'campo-obligatorio' | translate"></mat-error>
+        </mat-form-field>
+<!--
+        <mat-select  [placeholder]="'pais'| translate" formControlName="paisFacturacion" paisFacturacion  (change)="provinciasEnvio = paisesEnvio[datosUsuario.id_pais].provincias; isProvincias = true;" >
+            <mat-option *ngFor="let pais of paisesEnvio" [value]="pais.id">
+            {{ pais?.nombre}}
+          </mat-option>
+        </mat-select>
+
+        <mat-select  [placeholder]="'provincia'| translate" formControlName="provinciaFacturacion" [(value)]="selected"  provinciaFacturacion  [errorStateMatcher]="formMatcher">
+          <mat-option *ngFor="let provincia of provinciasEnvio" [value]="provincia.id">
+            {{ provincia?.nombre}}
+          </mat-option>
+        </mat-select>
+-->
+        <mat-select  [placeholder]="'pais'| translate" formControlName="paisFacturacion" paisFacturacion  >
+            <mat-option *ngFor="let pais of paisesEnvio" [value]="1">
+            España
+          </mat-option>
+        </mat-select>
+<br><hr>
+        <mat-select  [placeholder]="'provincia'| translate" formControlName="provinciaFacturacion" [(value)]="selected"  provinciaFacturacion  [errorStateMatcher]="formMatcher">
+          <mat-option [value]="49">
+            Valladolid
+          </mat-option>
+        </mat-select>
+
+        <mat-form-field >
+          <input matInput formControlName="poblacionFacturacion" poblacionFacturacion type="text" [placeholder]="'poblacion'| translate"   required>
+        </mat-form-field>
+
+        <mat-form-field >
+          <input matInput formControlName="cpFacturacion" cpFacturacion type="text" [placeholder]="'codigo-postal'| translate"  required>
+        </mat-form-field>
+
+        <!--
+          <mat-checkbox class= "example-margin" formControlName="utilizarMismosDatos" utilizarMismosDatos >
+           <label [innerHTML] = "'utilizarMismosDatos' | translate"></label>
+         </mat-checkbox>
+        -->
+      </div>
+    </div>
+
+<!-- DATOS DE ENVIO -->
+<br><br>
+      <div class="grupo-registro formEnvio" *ngIf="!f.utilizarMismosDatos.value">
+        <div class="titulo">
+          <h6 [innerHTML]="'datos-envio' | translate"></h6>
+        </div>
+        <br>
+        <div [formGroup]="datosForm">
+          <mat-form-field >
+            <input matInput  formControlName="nombreEnvio" type="text" [placeholder]="'nombre-envio'| translate"  nombreEnvio  >
+          </mat-form-field>
+
+          <mat-form-field >
+            <input matInput  formControlName="dirEnvio" type="text" [placeholder]="'direccion'| translate"  dirEnvio>
+          </mat-form-field>
+<!--
+        <mat-select  [placeholder]="'pais'| translate" formControlName="paisEnvio" paisEnvio (change)="provinciasEnvio = paisesEnvio[datosUsuario.id_pais].provincias; isProvincias = true;" >
+            <mat-option *ngFor="let pais of paisesEnvio" [value]="pais.id">
+            {{ pais?.nombre}}
+          </mat-option>
+        </mat-select>
+        <br>
+        <mat-select  [placeholder]="'provincia'| translate" formControlName="provinciaEnvio" provinciaEnvio >
+            <mat-option *ngFor="let provinciaEnvio of provinciasEnvio" [value]="provinciaEnvio.id">
+            {{ provinciaEnvio?.nombre}}
+          </mat-option>
+        </mat-select>
+        <br>
+-->
+          <mat-select  [placeholder]="'pais'| translate" formControlName="paisEnvio"  paisEnvio >
+            <mat-option *ngFor="let pais of paisesEnvio" [value]="1">
+              España
+            </mat-option>
+          </mat-select>
+          <br><hr>
+          <mat-select  [placeholder]="'provincia'| translate" formControlName="provinciaEnvio"  provinciaEnvio >
+            <mat-option [value]="49">
+            Valladolid
+            </mat-option>
+          </mat-select>
+          <br>
+
+          <mat-form-field >
+            <input matInput  formControlName="poblacionEnvio" type="text" [placeholder]="'poblacion'| translate"  poblacionEnvio>
+          </mat-form-field>
+
+          <mat-form-field >
+            <input matInput  formControlName="cpEnvio" type="text" [placeholder]="'codigo-postal'| translate"  cpEnvio >
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- DATOS DE ENVÍO -->
+        <mat-list class="text-left" [formGroup]="datosForm">
+          <h4 mat-subheader [innerHTML]="'Transporte'"></h4>
+          <mat-radio-group  class="radio-group" (change)="CompruebaEnvio();" formControlName="formaDeEnvio" formaDeEnvio [(value)]="selected" required>
+            <mat-radio-button class="radio-button" *ngFor="let envio of enviosActivos" value="{{formasDeEnvio[envio].codigo}}">
+            {{formasDeEnvio[envio].nombre}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </mat-list>
+        <br><br>
+        <!-- DATOS DE PAGO -->
+          <mat-list class="text-left" [formGroup]="datosForm">
+            <h4 mat-subheader [innerHTML]="'datos-pago' | translate"></h4>
+            <mat-radio-group  class="radio-group" formControlName="formaDePago" formaDePago [(value)]="selected" required>
+              <mat-radio-button class="radio-button" *ngFor="let pago of pagosActivos" value="{{formasDePago[pago].codigo}}">
+                <span><img src="{{ icono }}" class="margin-right-1" *ngFor="let icono of formasDePago[pago].iconos" height="24" /></span>
+                {{formasDePago[pago].nombre}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-list>
+          <br><br>
+        <div class="sms" *ngIf="!datosForm.valid">
+          <h6  [innerHTML]="'revisa' | translate"></h6>
+        </div>
+        <button md-raised-button type="submit" *ngIf="datosForm.valid" [disabled]="!datosForm.valid" class="btn btn-comprar" [innerHTML]="'finalizar-compra' | translate"></button>
+        <br><br>
+    </form>
+
+    </div>
+
+    <!-- RESUME DE CARRITO -->
+
+      <div class="col-lg-4 col-md-12">
+      <div class="carrito-resumen">
+        <mat-list>
+          <h3 mat-header [innerHTML]="'resumen-titulo' | translate"></h3>
+        </mat-list>
+        <div class="titulo">
+          <span class="subtitle">{{numProductos}} producto(s)</span>
+        </div>
+        <div class="listado" *ngIf="carrito.length>0;else carritovaciotmpl">
+          <div class="item"  *ngFor="let item of carrito; let i = index">
+            <div class="foto">
+              <img src="{{item.urlFoto}}" />
+            </div>
+            <div class="datos">
+                <h3 class="tit"><span [innerHTML]=" item.nombre | translate"></span></h3>
+                <div class="precio-anterior" *ngIf="item.precio_rebajado != item.precio">{{ item.precio | formatocomas}} x ({{item.unidades}}) </div>
+                <div class="precio">{{ item.precio_rebajado | formatocomas}} x ({{item.unidades}}) </div>
+                <div class="total-parcial">{{item.unidades * item.precio_rebajado | formatocomas }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="total">
+          <div class="gastos" *ngIf="totalGastos == 0">
+            <span [innerHTML]="'gastos-gratis' | translate"></span>
+          </div>
+          <div><span [innerHTML]="'precio-base' | translate"></span> {{total | formatocomas}}</div>
+          <div><span [innerHTML]="'gastos-envio' | translate"></span>{{totalGastos | formatocomas}}</div>
+          <span class="cantidad">{{totalFinal | formatocomas }}</span>
+          <br>
+          <small [innerHTML]="'iva-incluido' | translate"></small>
+          <br>
+          <span class="aviso-compra" *ngIf="totalFinal < carritoService.minCompraSinGastos" [innerHTML]="'completa-compra' | translate"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="espera" *ngIf="enviando">
+      <div class="lds-ripple"><div></div><div></div></div>
+      <h3>Esperando respuesta...</h3>
+  </div>
+
+
+
+</div>
